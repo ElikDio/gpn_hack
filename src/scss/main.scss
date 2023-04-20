@@ -1,0 +1,473 @@
+$font: "Segoe UI", Arial, sans-serif;
+$tiny-font: 14px;
+$small-font: 16px;
+$medium-font: 18px;
+$big-font: 24px;
+$huge-font: 32px;
+
+$site-background: #ecf1f4;
+$block-background: #e0e7ea;
+$blue-translucent: #00203399;
+$dark-blue: #004269;
+$blue: #0078d2;
+$grey: #dbe5ea;
+$dark-grey: #d0dbe1;
+$border-grey-color: #aac0cd;
+$courses-color: white;
+$course-shadow: 0px 2px 2px rgba(0, 32, 51, 0.02), 0px 2px 8px rgba(0, 32, 51, 0.16);
+
+* {
+    font-family: $font;
+    font-weight: 400;
+    background-color: $site-background;
+}
+
+@mixin course-info($font-title, $margin-top-title, $font-comps, $font-desc) {
+  .title {
+    background-color: $courses-color;
+    margin-top: $margin-top-title;
+    margin-bottom: 0px;
+    font-size: $font-title;
+  }
+
+  .competencies {    
+    background-color: $courses-color;
+    display: flex;
+    flex-direction: row;
+    h3 {
+      background-color: $courses-color;
+      color: $blue-translucent;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      font-size: $font-comps;
+    }
+  }
+  
+  p {
+    background-color: $courses-color;
+    white-space: normal;
+    margin-top: 5px;
+    font-size: $font-desc;
+    }    
+}
+
+@mixin button($background-color, $color, $border-color) {
+  background-color: $background-color;
+  color: $color;
+  margin-top: 20px;
+  padding: 0.4rem 1rem;
+  border: solid;
+  border-color: $border-color;
+  border-width: 1px;
+  border-radius: 5px;
+  font-size: $small-font;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: darken($background-color, 10%);
+    border-color: darken($border-color, 10%);
+  }
+}
+
+@mixin view_button($background-color, $color) {
+  background-color: $background-color;
+  color: $color;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 05px;
+  font-size: $small-font;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: darken($background-color, 10%);
+  }
+}
+
+@mixin course($white-space) {
+    background-color: white;
+    width: 484px;
+    height: 260px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 32px;
+    padding-top: 5px;
+    white-space: $white-space;
+    flex-shrink: 0;
+    border-radius: 15px;
+    box-shadow: $course-shadow;
+
+    a {
+      display: flex;
+      background-color: $courses-color;
+      width: 30px;
+      height: 30px;
+      margin-left: 85%;
+      margin-top: -20px;
+      
+      .image {
+        background-color: $courses-color;
+        width: 30px;
+        height: 30px;
+       }
+    }
+
+    .small-progress-bar {
+      background-color: $courses-color;
+      display: flex;
+      flex-direction: row;
+      margin-left: 65%;
+      margin-top: -20px;
+      
+      #no_start {
+        margin-left: 25%;
+      }
+      
+      h3 {
+        display: flex;
+        background-color: $courses-color;
+        margin-top: 5px;
+        font-size: $tiny-font;
+      }
+
+      .progress-bar-container {
+        display: flex;
+        background-color: white;
+        width: 30px;
+        height: 30px;
+        margin-left: 15px;
+
+        .CircularProgressbar {
+          display: flex;
+          background-color: white;
+        }
+      }
+    }
+    .info {
+      background-color: white; 
+      @include course-info($big-font, 32px, $tiny-font, $tiny-font)
+    }
+
+    .btn-0, .btn-1 {
+      @include button($blue, white, $blue);
+    }
+    .btn-2 {
+      @include button(white, $blue, $blue);
+    }
+}
+
+.header {
+  background-color: $courses-color;
+  display: flex;
+  height: 70px;
+  margin: -10px -10px 0px -10px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2);
+
+  .header-left {
+    background-color: $courses-color;
+    display: flex;
+    align-items: center;
+    font-size: $small-font;
+    
+    h1, li {
+      background-color: $courses-color;
+      list-style: none;
+      cursor: pointer;
+    }
+  
+    h1 {
+      font-size: $medium-font;
+      padding-left: 1rem;
+      font-weight: 700;
+    }
+    
+    ul {
+      display: flex;
+      flex-direction: row;
+      margin-left: 1rem;
+      padding: 0;
+
+      li {
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  .header-right {
+    background-color: $courses-color;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    padding-right: 50px;
+    a{
+      background-color: $courses-color;
+    
+      .image {
+        background-color: $courses-color;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    a:hover {
+      cursor: pointer;
+    }
+
+    .setting {
+      padding-right: 40px;
+    }
+    
+    .header-avatar {
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.recomend {
+  width: 1440px;
+  max-width: 1440px;
+  height: 308px;
+  margin: auto;
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  h1 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    font-size: $big-font;
+  }
+  
+
+
+  .course-huge {
+    background-color: $courses-color;
+    width: 100%;
+    height: calc(100% - 64px);
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    box-shadow: $course-shadow;
+    
+    .progress-bar-container {
+      background-color: $courses-color;
+      width: 150px;
+      height: 150px;
+      margin-left: 100px;
+      margin-top: 40px;
+      display: flex;
+      
+      .CircularProgressbar {
+        background-color: $courses-color;
+      }
+      
+      .CircularProgressbar .CircularProgressbar-text {
+        background-color: $courses-color;
+        width: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        white-space: normal;
+        
+        .text {
+          font-size: $medium-font;
+          fill: $blue-translucent;
+        }
+        
+        .sub-text {
+          white-space: normal;
+          font-size: $tiny-font;
+          fill: $blue-translucent;
+        }
+    }
+
+    }
+
+    .info {
+      background-color: $courses-color;
+      margin-left: 100px;
+      @include course-info($huge-font, 28px, $tiny-font, $small-font);
+
+
+      .btn-0, .btn-1 {
+        @include button($blue, $courses-color, $blue);
+      }
+      .btn-2 {
+        @include button($courses-color, $blue, $blue);
+      }
+    }
+  }
+}
+
+.separator {
+  width: 1440px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  margin-top: 40px;
+  hr {
+    width: 620px;
+    margin: auto;
+  }
+  .show-btn {
+    @include view_button($grey, $dark-blue)
+  }
+}
+
+.job-title {
+  background-color: $block-background;
+  width: 1440px;
+  max-width: 1440px;
+  height: 400px;
+  margin: auto;
+  margin-top: 3%;
+  border-radius: 10px;
+  overflow-x: hidden;
+  
+  .job-title-header {
+    background-color: $block-background;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+
+
+    h1 {
+      background-color: $block-background;
+      margin-top: 32px;
+      margin-left: 32px;
+      text-align: left;
+      font-size: $big-font;
+    }
+    
+    .hide-btn {
+      margin-left: 32px;
+      margin-top: 32px;
+      height: 35px;
+      @include view_button($dark-grey, $dark-blue)
+    }
+    
+    .switch {
+      background-color: $block-background;
+      margin-left: auto;
+      margin-top: 32px;
+      margin-right: 32px;
+
+      button {
+        background-color: $dark-grey;
+        color: $dark-blue;
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($dark-grey, 10%);
+        }
+      }
+    }
+  } 
+
+  .job-courses {
+    white-space: nowrap;
+    background-color: rgb(224, 231, 234);;
+    display: flex;
+    width: calc(100% + $small-font);
+    margin-right: -$small-font;
+
+    .sqroller {
+      white-space: nowrap;
+      background-color: rgb(224, 231, 234);;
+      display: flex;
+      width: calc(100% + $small-font);
+      margin-left: 5px;
+      transition: transform 0.6s ease-in-out;
+      .course-scroll {
+        @include course(nowrap);
+      }
+    }
+  }
+}
+
+.catalog {
+  width: 1440px;
+  max-width: 1440px;
+  height: 750px;
+  margin: auto;
+  margin-top: 3%;
+  
+  h1 {
+    font-size: $big-font;
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    display: flex;
+    width: 580px;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    list-style: none;
+    
+    border: 1px solid $border-grey-color;
+    border-radius: 4px;
+    background-color: transparent;
+    
+    li {
+      padding: 8px 15px 8px 15px;
+      position: relative;
+
+      &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+  
+      &:not(:last-child)::after {
+        content: "";
+        width: 1px;
+        height: 60%;
+        top: 50%;
+        right: 0;
+        position: absolute;
+        transform: translateY(-50%);
+        background-color: $border-grey-color;
+      }
+  
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  
+  .all-courses {
+    width: 1640px;
+    display: flex;
+    flex-wrap: wrap;
+    white-space: normal;
+    
+    .course {
+      &:nth-child(3n - 2){
+        margin-left: 0px;
+      }
+      
+      @include course(normal);
+      width: 435px;
+      
+    }
+  }
+}
